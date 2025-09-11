@@ -8,7 +8,7 @@ import AdminDashboard from './pages/AdminDashboard';
 import FuncionarioDashboard from './pages/FuncionarioDashboard';
 
 const Dashboard: React.FC = () => {
-  const { user, isAdmin } = useAuth();
+  const { isAdmin } = useAuth();
   
   if (isAdmin) {
     return <AdminDashboard />;

@@ -49,21 +49,21 @@ const AdminDashboard: React.FC = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    fetchEstatisticas();
-  }, [periodo]);
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const response = await servicosAPI.getEstatisticas(periodo);
+        setEstatisticas(response.data);
+      } catch (error: any) {
+        setError('Erro ao carregar estatísticas');
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const fetchEstatisticas = async () => {
-    try {
-      setLoading(true);
-      const response = await servicosAPI.getEstatisticas(periodo);
-      setEstatisticas(response.data);
-    } catch (error: any) {
-      setError('Erro ao carregar estatísticas');
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+    fetchData();
+  }, [periodo]);
 
   if (loading) {
     return (
