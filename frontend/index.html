@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#141525" />
+    <meta name="description" content="MISTERVPN - Professional VPN Application based on DTunnel" />
+    <title>MISTERVPN</title>
+    <script>
+      // Preload the DTunnel API globals
+      window.DtGetStatusBarHeight = window.DtGetStatusBarHeight || { execute: () => Promise.resolve(0) };
+      window.DtGetNavigationBarHeight = window.DtGetNavigationBarHeight || { execute: () => Promise.resolve(0) };
+      window.DtGetVpnState = window.DtGetVpnState || { execute: () => Promise.resolve('disconnected') };
+      window.DtGetLocalIP = window.DtGetLocalIP || { execute: () => Promise.resolve('127.0.0.1') };
+      window.DtGetNetworkName = window.DtGetNetworkName || (() => 'Unknown Network');
+      window.DtGetLocalConfigVersion = window.DtGetLocalConfigVersion || { execute: () => Promise.resolve('1.0.0') };
+      window.DtAppVersion = window.DtAppVersion || { execute: () => Promise.resolve('1.0.0') };
+      window.DtExecuteVpnStart = window.DtExecuteVpnStart || { execute: () => Promise.resolve(true) };
+      window.DtExecuteVpnStop = window.DtExecuteVpnStop || { execute: () => Promise.resolve(true) };
+      window.DtGetConfigs = window.DtGetConfigs || { execute: () => Promise.resolve([]) };
+      window.DtSetConfig = window.DtSetConfig || { execute: () => Promise.resolve(true) };
+      window.DtGetDefaultConfig = window.DtGetDefaultConfig || { execute: () => Promise.resolve(null) };
+      window.DtUsername = window.DtUsername || { get: () => '', set: () => {} };
+      window.DtPassword = window.DtPassword || { get: () => '', set: () => {} };
+      window.DtUuid = window.DtUuid || { get: () => '', set: () => {} };
+      window.DtGetLogs = window.DtGetLogs || { execute: () => Promise.resolve([]) };
+      window.DtClearLogs = window.DtClearLogs || { execute: () => Promise.resolve(true) };
+      window.DtStartAppUpdate = window.DtStartAppUpdate || { execute: () => Promise.resolve(true) };
+      window.DtStartApnActivity = window.DtStartApnActivity || { execute: () => Promise.resolve(true) };
+      window.DtIgnoreBatteryOptimizations = window.DtIgnoreBatteryOptimizations || { execute: () => Promise.resolve(true) };
+      window.DtCleanApp = window.DtCleanApp || { execute: () => Promise.resolve(true) };
+      window.DtGetStatusHotSpotService = window.DtGetStatusHotSpotService || { execute: () => Promise.resolve(false) };
+      window.DtStartHotSpotService = window.DtStartHotSpotService || { execute: () => Promise.resolve(true) };
+      window.DtStopHotSpotService = window.DtStopHotSpotService || { execute: () => Promise.resolve(true) };
+      window.DtTranslateText = window.DtTranslateText || { execute: (text) => Promise.resolve(text) };
+      window.dtVpnStateListener = window.dtVpnStateListener || (() => {});
+      window.dtOnNewLogListener = window.dtOnNewLogListener || (() => {});
+      window.dtConfigClickListener = window.dtConfigClickListener || (() => {});
+      window.dtCheckUserModelListener = window.dtCheckUserModelListener || (() => {});
+      window.dtCheckUserStartedListener = window.dtCheckUserStartedListener || (() => {});
+      window.dtMessageErrorListener = window.dtMessageErrorListener || (() => {});
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/index.tsx"></script>
+  </body>
+</html>
